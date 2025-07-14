@@ -43,13 +43,13 @@ Go to: Settings > Secrets > Actions in your repo and add the following:
 1. Go to @BotFather in Telegram
 2. Create a new bot → copy the token
 3. Start a conversation with your bot in Telegram (`/start`)
-4. Visit this URL to retrieve your chat ID:
+4. Visit this URL to retrieve your chat ID (replace "<your_token>":
 
 ```bash
 https://api.telegram.org/bot<your_token>/getUpdates
 ```
 
-5. Look for:
+Look for:
 
 ```json
 "chat": { "id": 123456789 }
