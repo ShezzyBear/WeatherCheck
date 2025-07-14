@@ -36,10 +36,19 @@ for entry in data['list']:
         rain = entry.get('rain', {}).get('3h', 0)
         rain_expected += rain
 
+msg = ""
+
 if rain_expected >= RAIN_THRESHOLD:
     msg = f"🌧️ Rain expected in next 12 hours ({rain_expected:.2f}\"), skip watering."
 else:
     msg = "🟢 No rain expected. Water as planned."
 
 print(msg)
-send_telegram_message(msg)
+
+# Send Telegram message
+try:
+    send_telegram_message(msg)
+    print("✅ Telegram message sent (attempted)")
+except Exception as e:
+    print(f"❌ Failed to send Telegram message: {e}")
+
