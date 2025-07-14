@@ -33,8 +33,9 @@ rain_expected = 0.0
 for entry in data['list']:
     forecast_time = datetime.datetime.strptime(entry['dt_txt'], '%Y-%m-%d %H:%M:%S')
     if now < forecast_time <= cutoff:
-        rain = entry.get('rain', {}).get('3h', 0)
-        rain_expected += rain
+        rain_mm = entry.get('rain', {}).get('3h', 0)
+        rain_in = rain_mm * 0.0393701
+        rain_expected += rain_in
 
 msg = ""
 
