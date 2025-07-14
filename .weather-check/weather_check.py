@@ -17,7 +17,7 @@ def send_telegram_message(message):
         'chat_id': CHAT_ID,
         'text': message
     }
-    requests.post(url, data=payload)
+    response = requests.post(url, data=payload)
     print(f"Telegram API response: {response.status_code} - {response.text}")
 
 # Weather logic
