@@ -24,7 +24,7 @@ def send_telegram_message(message):
 url = f"https://api.openweathermap.org/data/2.5/forecast?zip={ZIP},US&appid={API_KEY}&units=imperial"
 response = requests.get(url)
 data = response.json()
-print(data)
+#print(data) - Used for debugging with full data output
 
 now = datetime.datetime.utcnow()
 cutoff = now + datetime.timedelta(hours=12)
