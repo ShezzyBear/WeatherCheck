@@ -2,13 +2,26 @@ import os
 import requests
 import datetime
 
+# Weather config
 API_KEY = os.environ['OWM_API_KEY']
 LAT = os.environ['LATITUDE']
 LON = os.environ['LONGITUDE']
-RAIN_THRESHOLD = 0.05  # inches (can adjust as needed)
+RAIN_THRESHOLD = 0.05
 
+# Telegram config
+BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
+CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
+
+def send_telegram_message(message):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = {
+        'chat_id': CHAT_ID,
+        'text': message
+    }
+    requests.post(url, data=payload)
+
+# Weather logic
 url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={API_KEY}&units=imperial"
-
 response = requests.get(url)
 data = response.json()
 
@@ -23,6 +36,9 @@ for entry in data['list']:
         rain_expected += rain
 
 if rain_expected >= RAIN_THRESHOLD:
-    print(f"🌧️ Rain expected in next 12 hours ({rain_expected:.2f}\"), skip watering.")
+    msg = f"🌧️ Rain expected in next 12 hours ({rain_expected:.2f}\"), skip watering."
 else:
-    print("🟢 No rain expected. Water as planned.")
+    msg = "🟢 No rain expected. Water as planned."
+
+print(msg)
+send_telegram_message(msg)
