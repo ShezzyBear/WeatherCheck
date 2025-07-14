@@ -22,9 +22,10 @@ def send_telegram_message(message):
     print(f"Telegram API response: {response.status_code} - {response.text}")
 
 # Weather logic
-url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&appid={API_KEY}&units=imperial"
+url = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API_KEY}"
 response = requests.get(url)
 data = response.json()
+print(data)
 
 now = datetime.datetime.utcnow()
 cutoff = now + datetime.timedelta(hours=12)
