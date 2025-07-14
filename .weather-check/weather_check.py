@@ -4,8 +4,7 @@ import datetime
 
 # Weather config
 API_KEY = os.environ['OWM_API_KEY']
-LAT = os.environ['LATITUDE']
-LON = os.environ['LONGITUDE']
+ZIP = os.environ['ZIP']
 RAIN_THRESHOLD = 0.05
 
 # Telegram config
@@ -22,7 +21,7 @@ def send_telegram_message(message):
     print(f"Telegram API response: {response.status_code} - {response.text}")
 
 # Weather logic
-url = f"https://api.openweathermap.org/data/2.5/weather?lat={LAT}&lon={LON}&appid={API_KEY}"
+url = f"https://api.openweathermap.org/data/2.5/forecast?zip={ZIP},US&appid={API_KEY}&units=imperial"
 response = requests.get(url)
 data = response.json()
 print(data)
