@@ -32,25 +32,25 @@ git clone https://github.com/ShezzyBear/WeatherCheck.git
 ### 2. 🔐 Add Secrets to GitHub Actions
 Go to: Settings > Secrets > Actions in your repo and add the following:
 
-Secret Name	  Example Value	  Description
-OWM_API_KEY	  abc123...	      Your OpenWeatherMap API key
-ZIP	          21221	          Your ZIP code (US only)
-TELEGRAM_BOT_TOKEN	123456:ABC-xyz...	Bot token from @BotFather
-TELEGRAM_CHAT_ID	123456789	Your personal Telegram chat ID
+| Secret Name | Example Value | Description |
+|-------------|---------------|-------------|
+| `OWM_API_KEY` | `abc123...` | Your OpenWeatherMap API key |
+| `ZIP` | `10029` | Your ZIP code (US only) |
+| `TELEGRAM_BOT_TOKEN` | `123456:ABC-xyz...` | Bot token from @BotFather |
+| `TELEGRAM_CHAT_ID` | `123456789` | Your personal Telegram chat ID |
 
 ### 3. 🧪 Test Your Telegram Bot (One-Time Setup)
-Go to @BotFather in Telegram
+1. Go to @BotFather in Telegram
+2. Create a new bot → copy the token
+3. Start a conversation with your bot in Telegram (`/start`)
+4. Visit this URL to retrieve your chat ID:
 
-Create a new bot → copy the token
-
-Start a conversation with your bot in Telegram (/start)
-
-Visit this URL to retrieve your chat ID:
 ```bash
 https://api.telegram.org/bot<your_token>/getUpdates
 ```
 
-Look for
+5. Look for:
+
 ```json
 "chat": { "id": 123456789 }
 ```
@@ -78,7 +78,7 @@ on:
 
 ---
 
-##🛠️ Future Improvements
+## 🛠️ Future Improvements
 Add weather icons or formatted forecast times
 
 Support multiple locations or daily summaries
@@ -89,7 +89,7 @@ Integrate with smart irrigation systems
 
 ---
 
-##🙌 Contributing
+## 🙌 Contributing
 Pull requests and suggestions are welcome!
 Feel free to fork this project, improve the logic, or add more integrations.
 
